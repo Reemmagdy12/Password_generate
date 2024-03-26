@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="password.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Generate Your Password</h1>
+        <div class="box">
+            <input type="text" placeholder="Password" id="input">
+            <img src="rpg_img/images/copy.png" onclick="copy()">
+        </div>
+        <button class="Ge" onclick="generatePassword()">Generate</button>
+    </div>
+    <script>
+        const inputBox = document.getElementById("input");
+        const lenght = 12;
+        const ab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        const numbers = "0123456789";
+        const special = "!@#$%^&*()-_=+|[]{};:/?.>";
+        const all = ab + numbers + special;
+        function generatePassword() {
+            let password = "";
+            password += ab[Math.floor(Math.random() * ab.length)];
+            password += numbers[Math.floor(Math.random() * numbers.length)];
+            password += special[Math.floor(Math.random() * special.length)];
+            while (lenght > password.length) {
+                password += all[Math.floor(Math.random() * all.length)];
+            }
+            inputBox.value = password;
+
+
+
+
+        }
+
+        function copy() {
+            inputBox.select();
+            document.execCommand("copy");
+        }
+    </script>
+
+
+</body>
+
+</html>
